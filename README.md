@@ -1,5 +1,7 @@
 # Stock Ticker LED Board
 
+<img width="1290" height="990" alt="image" src="https://github.com/user-attachments/assets/a524016c-cd12-43ce-a668-251598b35273" />
+
 A desk/wall stock ticker for a Raspberry Pi + Adafruit RGB Matrix Bonnet/HAT driving a 64x32 panel.
 
 - **Main screen:** your favorite stocks, one at a time, each with price, % change and a live chart (green when up for
