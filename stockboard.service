@@ -1,0 +1,13 @@
+[Unit]
+Description=Stock ticker LED board
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+WorkingDirectory=/home/pi/stockboard
+ExecStart=/usr/bin/python3 /home/pi/stockboard/main.py
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target

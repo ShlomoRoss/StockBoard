@@ -1,0 +1,56 @@
+# ----------------------------------------------------------------------------
+# Stock ticker LED board settings. Edit, then restart:   sudo systemctl restart stockboard
+# There is no web page: this file is the only place settings live.
+# ----------------------------------------------------------------------------
+
+stocks:
+  favorites: [AAPL, NVDA, TSLA, MSFT]     # these get a full card with a chart on the main screen (up to 12)
+  watchlist: [AMZN, GOOGL, META, AMD, NFLX, SPY, QQQ, BTC-USD]   # these scroll along the bottom ticker (up to 60)
+  indices: ["^GSPC", "^DJI", "^IXIC"]     # market overview screen + start of the ticker (SPX, DOW, NASDAQ)
+  chart_ranges: ["1d"]                    # charts to cycle per favorite: 1d 5d 1mo 3mo 6mo 1y  e.g. ["1d", "1mo"]
+  finnhub_key: ""                         # optional free key from finnhub.io; used as one more backup source
+  # Symbols are normal tickers: AAPL, BRK-B, SPY. Crypto: BTC-USD, ETH-USD. Indices: ^GSPC (or SPX), ^DJI, ^VIX.
+
+rotation:
+  screens: [overview, movers, status]     # extra screens after the stock cards (any of: overview movers status)
+  card_seconds: 6                         # seconds per stock card
+  other_seconds: 4                        # seconds per extra screen
+
+ticker:
+  speed: 26                               # pixels per second (lower = slower)
+  include_indices: true                   # start the ticker with SPX / DOW / NASDAQ
+
+refresh:                                  # seconds between updates (be gentle; free sources rate-limit)
+  favorites: 30                           # favorites' live charts while the market is open
+  watchlist: 75                           # ticker symbols while the market is open
+  history: 900                            # 5d / 1mo / ... charts
+  closed: 1800                            # everything, when the market is closed (crypto keeps the normal rate)
+
+display:
+  width: 64            # columns per panel
+  height: 32           # rows per panel
+  chain_length: 1      # panels daisy-chained horizontally
+  parallel: 1
+  hardware_mapping: adafruit-hat   # use adafruit-hat-pwm if you did the PWM solder mod
+  brightness: 40       # 1-100
+  gpio_slowdown: 2     # raise to 3 or 4 (Pi 4/5) if you see flicker
+  font: /usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf
+  font_size: 8
+  big_font_size: 16
+  fps: 20
+  extra: {}
+  # Extra driver tuning, only if you need it:
+  #   pwm_lsb_nanoseconds: 200   #   pwm_bits: 8   #   limit_refresh_rate_hz: 120
+  #   disable_hardware_pulsing: true   # if you did NOT do the Adafruit PWM jumper mod
+  #   led_rgb_sequence: BGR            # if colors are swapped
+  #   rp1_pio: 1                       # Pi 5 only
+
+clock:
+  hour24: false
+
+night:                 # dim the board at night
+  enabled: true
+  start: "22:00"
+  end: "07:00"
+  brightness: 8
+  favorites_only: false   # true = ticker shows only your favorites at night
