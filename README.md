@@ -2,8 +2,6 @@
 
 <img width="1290" height="990" alt="image" src="https://github.com/user-attachments/assets/a524016c-cd12-43ce-a668-251598b35273" />
 
-A desk/wall stock ticker for a Raspberry Pi + Adafruit RGB Matrix Bonnet/HAT driving a 64x32 panel.
-
 - **Main screen:** your favorite stocks, one at a time, each with price, % change and a live chart (green when up for
   the day, red when down, dotted line at the previous close). Between the cards it rotates through a **market
   overview** (S&P 500, Dow, Nasdaq), **top movers** and a **market status** screen (open/closed, countdown to the
